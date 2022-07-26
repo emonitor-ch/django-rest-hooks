@@ -4,6 +4,7 @@
 
 ## What are Django REST Hooks?
 
+This repository is the copy of [django-rest-hooks](https://github.com/zapier/django-rest-hooks) which is not maintained anymore. We will continue to maintain it for our internal needs.
 
 REST Hooks are fancier versions of webhooks. Traditional webhooks are usually
 managed manually by the user, but REST Hooks are not! They encourage RESTful

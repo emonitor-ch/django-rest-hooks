@@ -7,10 +7,7 @@ except ImportError:
 from django.core.exceptions import ImproperlyConfigured
 from django.conf import settings
 
-if django.VERSION >= (2, 0,):
-    get_model_kwargs = {'require_ready': False}
-else:
-    get_model_kwargs = {}
+get_model_kwargs = {'require_ready': False}
 
 
 def get_module(path):

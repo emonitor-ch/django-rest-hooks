@@ -1,2 +1,4 @@
 requests==1.2.3
 mock==1.0.1
+django-contrib-comments>=1.8.0
+Django>=2.0,<2.2

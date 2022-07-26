@@ -12,12 +12,7 @@ from django.db.models.signals import post_save, post_delete
 from django.test.signals import setting_changed
 from django.dispatch import receiver
 
-try:
-    # Django <= 1.6 backwards compatibility
-    from django.utils import simplejson as json
-except ImportError:
-    # Django >= 1.7
-    import json
+import json
 
 from rest_hooks.signals import hook_event, raw_hook_event, hook_sent_event
 from rest_hooks.utils import distill_model_event, get_hook_model, get_module, find_and_fire_hook
