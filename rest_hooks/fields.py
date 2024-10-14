@@ -1,9 +1,18 @@
+from cryptography.fernet import Fernet
+
+from django.conf import settings
+from django.core.exceptions import ImproperlyConfigured
+from django.db import models
+
+ENCRYPTION_KEY = getattr(settings, 'ENCRYPTION_KEY', None)
+
+
 class EncryptedTextField(models.TextField):
     @property
     def fernet(self):
-        if not hasattr(settings, 'ENCRYPTION_KEY'):
+        if not ENCRYPTION_KEY:
             raise ImproperlyConfigured("ENCRYPTION_KEY must be set in settings")
-        return Fernet(settings.ENCRYPTION_KEY)
+        return Fernet(ENCRYPTION_KEY)
 
     def from_db_value(self, value, expression, connection):
         if value is None:
