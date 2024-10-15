@@ -14,6 +14,7 @@ from django.dispatch import receiver
 
 import json
 
+from rest_hooks.fields import EncryptedTextField
 from rest_hooks.signals import hook_event, raw_hook_event, hook_sent_event
 from rest_hooks.utils import distill_model_event, get_hook_model, get_module, find_and_fire_hook
 
@@ -71,6 +72,8 @@ class AbstractHook(models.Model):
     user = models.ForeignKey(AUTH_USER_MODEL, related_name='%(class)ss', on_delete=models.CASCADE)
     event = models.CharField('Event', max_length=64, db_index=True)
     target = models.URLField('Target URL', max_length=255)
+
+    authorization_token = EncryptedTextField('Auth token', max_length=255, blank=True, null=True)
 
     class Meta:
         abstract = True
